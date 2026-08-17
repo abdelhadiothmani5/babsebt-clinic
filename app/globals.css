@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Dental Clinic — Light Mode */
+    --background: 40 33% 98%;
+    --foreground: 220 45% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 45% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 45% 12%;
+    --primary: 220 45% 14%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 220 45% 14%;
+    --muted: 40 12% 93%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 220 76% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 76% 52%;
+    --gold: 38 45% 58%;
+    --gold-foreground: 220 45% 14%;
+    --chart-1: 220 76% 52%;
+    --chart-2: 38 45% 58%;
+    --chart-3: 173 58% 39%;
+    --chart-4: 197 37% 24%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 220 35% 7%;
+    --foreground: 40 25% 96%;
+    --card: 220 30% 10%;
+    --card-foreground: 40 25% 96%;
+    --popover: 220 30% 10%;
+    --popover-foreground: 40 25% 96%;
+    --primary: 40 25% 96%;
+    --primary-foreground: 220 45% 12%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 40 25% 96%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 80% 62%;
+    --accent-foreground: 220 35% 7%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 40 25% 96%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 220 80% 62%;
+    --gold: 38 50% 65%;
+    --gold-foreground: 220 35% 7%;
+    --chart-1: 220 80% 62%;
+    --chart-2: 38 50% 65%;
+    --chart-3: 160 60% 45%;
+    --chart-4: 30 80% 55%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv01", "cv02";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-foreground;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+
+  .font-arabic {
+    font-family: var(--font-arabic), "Noto Kufi Arabic", sans-serif;
+  }
+
+  .glass {
+    @apply bg-background/70 backdrop-blur-xl border-border/40;
+  }
+
+  .glass-dark {
+    @apply bg-white/5 backdrop-blur-xl border-white/10;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(38 55% 72%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-navy {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-premium {
+    box-shadow: 0 1px 2px hsl(var(--foreground) / 0.04),
+                0 4px 12px hsl(var(--foreground) / 0.06),
+                0 16px 48px hsl(var(--foreground) / 0.04);
+  }
+
+  .shadow-glow-accent {
+    box-shadow: 0 0 0 1px hsl(var(--accent) / 0.1),
+                0 4px 24px hsl(var(--accent) / 0.15);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .bg-radial-fade {
+    background: radial-gradient(ellipse at center, hsl(var(--background)) 0%, transparent 70%);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out both;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
